@@ -53,6 +53,6 @@ export const deleteBook = async (req: Request, res: Response) => {
 		}
 	}catch(error) { 
 		//console.log("returning error")
-		res.status(404).json("invalid param"); // is never triggered
+		res.status(404).json("invalid param"); 
 	}
 };
