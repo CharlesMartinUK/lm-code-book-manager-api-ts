@@ -139,7 +139,7 @@ describe("DELETE /api/v1/books/{bookId}  endpoint", () => {
 	test("status code successfully 200 for deleting a valid book", async () => {
 		
 		//ARRANGE
-				
+		//need to mock what expected data is		
 		jest
 			.spyOn(bookService, "deleteBook")
 			.mockResolvedValue(1);
@@ -155,7 +155,7 @@ describe("DELETE /api/v1/books/{bookId}  endpoint", () => {
 		expect(res.statusCode).toEqual(200); 
 	});
 
-	 //could not get this to work, does not return error 404
+	 //need to mock what expected data is
 	test("status code error 204 for deleting a unfound id", async () => {
 		
 		//ARRANGE
