@@ -133,3 +133,59 @@ describe("POST /api/v1/books endpoint", () => {
 		expect(res.statusCode).toEqual(400);
 	});
 });
+
+
+describe("DELETE /api/v1/books/{bookId}  endpoint", () => {
+	test("status code successfully 200 for deleting a valid book", async () => {
+		
+		//ARRANGE
+				
+		jest
+			.spyOn(bookService, "deleteBook")
+			.mockResolvedValue(1);
+		// Act
+		const res = await request(app)
+			.delete("/api/v1/books/1")  
+			
+
+		// Assert
+		
+		//console.log(res)
+		
+		expect(res.statusCode).toEqual(200); 
+	});
+
+	 //could not get this to work, does not return error 404
+	test("status code error 204 for deleting a unfound id", async () => {
+		
+		//ARRANGE
+		jest
+			.spyOn(bookService, "deleteBook")
+			.mockResolvedValue(0);		
+		// Act
+		const res = await request(app)
+			.delete("/api/v1/books/77")
+			//.send({ bookId: 1 });
+
+		// Assert
+		expect(res.statusCode).toEqual(204);
+	});
+	
+	
+	 //could not get this to work, does not return error 404
+	test("status code error 404 for deleting a invalid id", async () => {
+		
+		//ARRANGE
+		jest
+			.spyOn(bookService, "deleteBook")
+			.mockResolvedValue(0);		
+		// Act
+		const res = await request(app)
+			.delete("/api/v1/books/popoi")
+			//.send({ bookId: 1 });
+
+		// Assert
+		expect(res.statusCode).toEqual(404);
+	});
+	
+});

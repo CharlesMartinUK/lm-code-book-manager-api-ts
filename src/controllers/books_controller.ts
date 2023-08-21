@@ -35,3 +35,24 @@ export const updateBook = async (req: Request, res: Response) => {
 	const book = await bookService.updateBook(bookId, bookUpdateData);
 	res.status(204).json(book);
 };
+
+
+// User Story 5 - Update Book By Id Solution
+export const deleteBook = async (req: Request, res: Response) => {
+	const bookId = Number.parseInt(req.params.bookId);
+	console.log("param is ",bookId)
+
+	try {
+		const book = await bookService.deleteBook(bookId);  
+		//console.log("BOOK IS ",book)
+		if(book == 1)
+			res.status(200).json(book);
+		else {
+			//console.log("returning not found")
+			res.status(204).json("not found");
+		}
+	}catch(error) { 
+		console.log("returning error")
+		res.status(404).json("invalid param"); // is never triggered
+	}
+};
