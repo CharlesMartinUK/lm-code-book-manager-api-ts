@@ -155,7 +155,7 @@ describe("DELETE /api/v1/books/{bookId}  endpoint", () => {
 		expect(res.statusCode).toEqual(200); 
 	});
 
-	 //need to mock what expected data is
+	
 	test("status code error 204 for deleting a unfound id", async () => {
 		
 		//ARRANGE
@@ -172,7 +172,7 @@ describe("DELETE /api/v1/books/{bookId}  endpoint", () => {
 	});
 	
 	
-	 //could not get this to work, does not return error 404
+	 //could test invalid ids
 	test("status code error 404 for deleting a invalid id", async () => {
 		
 		//ARRANGE
