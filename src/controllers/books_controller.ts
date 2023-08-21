@@ -40,7 +40,7 @@ export const updateBook = async (req: Request, res: Response) => {
 // User Story 5 - Update Book By Id Solution
 export const deleteBook = async (req: Request, res: Response) => {
 	const bookId = Number.parseInt(req.params.bookId);
-	console.log("param is ",bookId)
+	//console.log("param is ",bookId)
 
 	try {
 		const book = await bookService.deleteBook(bookId);  
@@ -52,7 +52,7 @@ export const deleteBook = async (req: Request, res: Response) => {
 			res.status(204).json("not found");
 		}
 	}catch(error) { 
-		console.log("returning error")
+		//console.log("returning error")
 		res.status(404).json("invalid param"); // is never triggered
 	}
 };
